@@ -1,0 +1,53 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>EGGS LP Locker</title>
+</head>
+<body style="font-family:sans-serif; text-align:center; margin-top:100px;">
+  <h1>EGGS LP Locker</h1>
+  <button id="connectWallet">Connect Wallet</button><br><br>
+  <input type="text" id="amount" placeholder="Amount of LP to lock/unlock"><br><br>
+  <button id="lockButton">Lock LP Tokens</button>
+  <button id="unlockButton">Unlock LP Tokens</button>
+
+  <script type="module">
+    import {
+      Connection,
+      PublicKey,
+      clusterApiUrl
+    } from "https://cdn.jsdelivr.net/npm/@solana/web3.js/+esm";
+
+    const PROGRAM_ID = new PublicKey("Locker111111111111111111111111111111111111"); // Replace with deployed ID
+    const connection = new Connection(clusterApiUrl("devnet"), "confirmed");
+
+    let provider = null;
+    let walletAddress = null;
+
+    document.getElementById("connectWallet").onclick = async () => {
+      if (window.solana && window.solana.isPhantom) {
+        try {
+          const resp = await window.solana.connect();
+          walletAddress = resp.publicKey.toString();
+          alert("Wallet connected: " + walletAddress);
+        } catch (err) {
+          alert("User rejected the connection or there was an error.");
+        }
+      } else {
+        alert("Phantom Wallet not found. Please install it.");
+      }
+    };
+
+    document.getElementById("lockButton").onclick = async () => {
+      const amount = document.getElementById("amount").value;
+      alert("Locking " + amount + " LP tokens... (not fully implemented)");
+    };
+
+    document.getElementById("unlockButton").onclick = async () => {
+      const amount = document.getElementById("amount").value;
+      alert("Unlocking " + amount + " LP tokens... (not fully implemented)");
+    };
+  </script>
+</body>
+</html>

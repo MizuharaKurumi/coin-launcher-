@@ -1,0 +1,13 @@
+{
+    "token_name": "EasterEggs",
+    "symbol": "EGGS",
+    "decimals": 9,
+    "total_supply": "1000000000",
+    "locked_supply": "900000000",
+    "mint_authority_revoke": true,
+    "freeze_authority_revoke": true,
+    "update_authority_revoke": true,
+    "lp_locker": {
+        "owner_can_unlock": true
+    }
+}
